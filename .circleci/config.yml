@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/my-project
     docker:
-      - image: cimg/node:16.10.0-browsers
+      - image: zenika/alpine-chrome:89-with-node-14
     steps:
       - checkout
       - restore_cache:
