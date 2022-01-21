@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/my-project
     docker:
-      - image: zenika/alpine-chrome:89-with-node-14
+      - image: cimg/node:17.4.0-browsers
     steps:
       - checkout
       - restore_cache:
@@ -13,4 +13,5 @@ jobs:
           key: my-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
+      - run: export CHROME_BIN='/usr/bin/chromium'
       - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
